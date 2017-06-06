@@ -12,11 +12,12 @@ body.landing {
 }
 
 .hero-content .hero-title {
+    opacity: 1;
     position: absolute;
     top: 40%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    transform: translateY(-50%);
+    -webkit-transform: scaleX(0.9) translateY(50%);
+    -moz-transform: scaleX(0.9) translateY(50%);
+    transform: scaleX(0.9) translateY(50%);
     width: 100%;
     text-align: center;
     font-size: 4rem;
@@ -24,6 +25,12 @@ body.landing {
     text-transform: uppercase;
     letter-spacing: 0.5rem;
     text-shadow: 1px 1px 0px rgb(58,23,63);
+    -webkit-transition-delay: 1s;
+    -moz-transition-delay: 1s;
+    transition-delay: 1s;
+    -webkit-transition: all 1.25s ease-in-out;
+    -moz-transition: all 1.25s ease-in-out;
+    transition: all 1.25s ease-in-out;
 }
 
 .selling-points {
@@ -38,12 +45,12 @@ body.landing {
     -webkit-transform: scaleX(0.9) translateY(3rem);
     -moz-transform: scaleX(0.9) translateY(3rem);
     transform: scaleX(0.9) translateY(3rem);
-    -webkit-transition: all 0.25s ease-in-out;
-    -moz-transition: all 0.25s ease-in-out;
-    transition: all 0.25s ease-in-out;
-    -webkit-transition-delay: 0.2s;
-    -moz-transition-delay: 0.2s;
-    transition-delay: 0.2s;
+    -webkit-transition: all 1.25s ease-in-out;
+    -moz-transition: all 1.25s ease-in-out;
+    transition: all 1.25s ease-in-out;
+    -webkit-transition-delay: 1s;
+    -moz-transition-delay: 1s;
+    transition-delay: 1s;
 }
 
 .point .point-title {
