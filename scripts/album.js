@@ -125,7 +125,7 @@ var previousSong = function() {
 
     $('.main-controls .play-pause').html(playerBarPauseButton);
 
-    var $previousSongNumberCell = $getSongNumberCell(currentlyPlayingSongNumber)
+    var $previousSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber)
     var $lastSongNumberCell = getSongNumberCell(lastSongNumber)
 
     $previousSongNumberCell.html(pauseButtonTemplate);
