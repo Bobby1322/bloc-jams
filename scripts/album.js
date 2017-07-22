@@ -36,7 +36,7 @@ var createSongRow = function(songNumber, songName, songLength) {
         '<tr class="album-view-song-item">'
     + ' <td class="song-item-number" data-song-number= "' + songNumber + '">' + songNumber + '</td>'
     + ' <td class="song-item-title">' + songName + '</td>'
-    + ' <td class="song-item-duration">' + songLength + '</td>'
+    + ' <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
     + '</tr>'
     ;
 
@@ -130,8 +130,10 @@ var updateSeekBarWhileSongPlays = function() {
             var $seekBar = $('.seek-control .seek-bar');
 
             updateSeekPercentage($seekBar, seekBarFillRatio);
+            setCurrentTimeInPlayerBar(this.getTime());
         });
     }
+    
 };
 
 var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
@@ -243,11 +245,38 @@ var previousSong = function() {
     updateSeekBarWhileSongPlays();
 };
 
+var setCurrentTimeInPlayerBar = function (currentTime) {
+    var $currentTimeDisplay = $('.current-time');
+    var cleanTime = filterTimeCode(currentTime);
+    $currentTimeDisplay.text(cleanTime);
+};
+
+var setTotalTimeInPlayerBar = function (totalTime) {
+    var $totalTimeDisplay = $('.total-time');
+    var cleanTime = filterTimeCode(totalTime);
+    $totalTimeDisplay.text(cleanTime);
+};
+
+var filterTimeCode = function (timeInSeconds){
+    var timeNumber = parseInt(timeInSeconds);
+    var minutes = Math.floor(timeNumber / 60);
+    var seconds = (timeNumber % 60);
+
+    if (seconds < 10) {
+        return minutes + ":0" + seconds;
+    } else {
+
+    return minutes + ":" + seconds;
+    }
+    
+};
+
 var updatePlayerBarSong = function () {
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
     $('.currently-playing .artist-name').text(currentAlbum.artist);
     $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " | " + currentAlbum.artist)
     $('.main-controls .play-pause').html(playerBarPauseButton);
+    setTotalTimeInPlayerBar(currentSongFromAlbum.duration);
 };
 
 
@@ -270,3 +299,5 @@ $(document).ready(function() {
     $previousButton.click(previousSong);
     $nextButton.click(nextSong);
 });
+
+
